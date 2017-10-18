@@ -1,5 +1,5 @@
 require('../css/main.scss');
 
-import print from './module';
+import View from './view.js';
 
-print('it works well!');
+new View();
