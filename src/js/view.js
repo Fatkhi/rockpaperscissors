@@ -1,4 +1,4 @@
-import { qs } from './utils';
+import { qs } from './utils/utils';
 import { MOVES, PLAYER_1, PLAYER_2 } from './constants';
 import Events from './utils/events';
 
@@ -51,26 +51,41 @@ export default class View {
 				node.classList.remove('disabled');
 			}
 		});
+
+		if (disable) {
+			this.simulateButton.classList.add('disabled');
+		}
+		else {
+			this.simulateButton.classList.remove('disabled');
+		}
 	}
 
-	addActiveClass(move, player) {
-		let moveNodesArr;
-		if (player === PLAYER_1) {
-			moveNodesArr = this.player1Moves;
-		}
-		else if (player === PLAYER_2) {
-			moveNodesArr = this.player2Moves;
-		}
-		moveNodesArr[MOVES.indexOf(move)].classList.add('active');
+	addActiveClass(...args) {
+		const node = this.findPlayersNode(...args)
+		node.classList.add('active');
+	}
+
+	addWinnerClass(...args) {
+		const node = this.findPlayersNode(...args)
+		node.classList.add('winner');
+	}
+
+	addLoserClass(...args) {
+		const node = this.findPlayersNode(...args)
+		node.classList.add('loser');
 	}
 
 	resetView() {
 		this.player1Moves.forEach((node) => {
 			node.classList.remove('active');
+			node.classList.remove('winner');
+			node.classList.remove('loser');
 		});
 
 		this.player2Moves.forEach((node) => {
 			node.classList.remove('active');
+			node.classList.remove('winner');
+			node.classList.remove('loser');
 		});
 
 		this.showPlayAgainButton(false);
@@ -90,6 +105,16 @@ export default class View {
 		}
 	}
 
-	//TODO decouple logic, add observer, render logic in view, better styling, responsive layout
+	findPlayersNode(move, player) {
+		let moveNodesArr;
+		if (player === PLAYER_1) {
+			moveNodesArr = this.player1Moves;
+		}
+		else if (player === PLAYER_2) {
+			moveNodesArr = this.player2Moves;
+		}
+
+		return moveNodesArr[MOVES.indexOf(move)];
+	}
 
 }

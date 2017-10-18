@@ -1,48 +1,94 @@
+#app {
+	text-align: center;
+	background: #f5f5f5;
+  border: 2px solid #cacaca;
+  border-radius: 5px;
+	&:after {
+		content: "";
+	  display: table;
+	  clear: both;
+	}
+}
+
+//reset button
+button {
+	display: block;
+	margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+  outline: none;
+  box-sizing: content-box;
+}
+
 .player {
 	float: left;
 	padding: 50px;
+	&.right {
+		float: right;
+	}
+}
+
+.button {
+	color: grey;
+	border: 2px dashed darkgrey;
+	padding: 10px 20px;
+	width: 100px;
+  margin: 30px 10px;
+	cursor: pointer;
+	&:hover {
+		border: 2px solid darkgrey;
+	}
+	&.disabled:hover {
+		border: 2px dashed darkgrey;
+	}
 }
 
 .move {
 	padding: 20px;
 	margin: 10px;
+	width: 100px;
 	color: grey;
 	text-transform: uppercase;
 	text-align: center;
-	border: 1px solid #E0E0E0;
-	border-radius: 2px;
+	border: 2px solid #E0E0E0;
+	border-radius: 5px;
 	cursor: pointer;
 
 	&:hover {
-		background: whitesmoke;
+		border-color: darkgray;
 	}
-}
-
-.active {
-	background: whitesmoke;
 }
 
 .scoreboard {
-	float: left;
+	display: inline-block;
 	text-align: center;
 	padding: 50px;
-	text-align: center;
-}
 
-.scoreboard-text {
-	color: grey;
-	text-transform: uppercase;
-}
-
-.button {
-	color: grey;
-	border: 1px solid #E0E0E0;
-	padding: 10px 20px;
-	cursor: pointer;
-	&:hover {
-		background: whitesmoke;
+	&-text {
+		color: grey;
+		text-transform: uppercase;
+		font-size: 26px;
+		padding-bottom: 100px;
+		margin: 0;
+		padding: 0;
 	}
 }
+
+
+/*
+* === Modifiactor classes ===
+*/
+
+.active {
+	background: #E0E0E0;
+	&:hover {
+		border-color: #E0E0E0;
+	}
+}
+
 
 .hidden {
 	visibility: hidden;
@@ -51,8 +97,14 @@
 .disabled {
 	cursor: not-allowed;
 	&:hover {
-		background: initial;
+		border: 2px solid #E0E0E0;
 	}
 }
 
-//add clearfix
+.winner {
+	border: 2px solid green!important;
+}
+
+.loser {
+	border: 2px solid red!important;
+}

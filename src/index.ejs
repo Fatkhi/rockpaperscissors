@@ -5,35 +5,36 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
 	<div id="app">
 		<section class="player" id="player1">
-			<div class="move js-rock">
-				Rock
-			</div>
-			<div class="move js-paper">
-				Paper
-			</div>
-			<div class="move js-scissors">
-				Scissors
-			</div>
-			<div class="button js-simulate">Simulate move</div>
+			<button class="move js-rock">
+				<i class="fa fa-4x fa-hand-rock-o" aria-hidden="true"></i>				
+			</button>
+			<button class="move js-paper">
+				<i class="fa fa-4x fa-hand-paper-o" aria-hidden="true"></i>
+			</button>
+			<button class="move js-scissors">
+				<i class="fa fa-4x fa-hand-scissors-o" aria-hidden="true"></i>
+			</button>
+			<button class="button js-simulate">Simulate move</button>
 		</section>	
 		<section class="scoreboard" id="scoreboard">
-			<div class="scoreboard-text">Make a move</div>
-			<div class="button hidden js-play-again">Play again</div>
+			<h1 class="scoreboard-text">Make a move</h1>
+			<button class="button hidden js-play-again">Play again</button>
 		</section>
-		<section class="player" id="player2">
-			<div class="move disabled js-rock">
-				Rock
-			</div>
-			<div class="move disabled js-paper">
-				Paper
-			</div>
-			<div class="move disabled js-scissors">
-				Scissors
-			</div>
+		<section class="player right" id="player2">
+			<button class="move disabled js-rock">
+				<i class="fa fa-4x fa-hand-rock-o" aria-hidden="true"></i>		
+			</button>
+			<button class="move disabled js-paper">
+				<i class="fa fa-4x fa-hand-paper-o" aria-hidden="true"></i>
+			</button>
+			<button class="move disabled js-scissors">
+				<i class="fa fa-4x fa-hand-scissors-o" aria-hidden="true"></i>
+			</button>
 		</section>	
 	</div>
 </body>

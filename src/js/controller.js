@@ -1,11 +1,9 @@
-import Model from './model';
 import Events from './utils/events';
-import View from './view';
 
 import { PLAYER_1, PLAYER_2 } from './constants';
 
 export default class Controller {
-	constructor() {
+	constructor(Model, View) {
 		this.events = new Events();
 		this.model = new Model();
 		this.view = new View();
@@ -26,17 +24,16 @@ export default class Controller {
 	onMoveSelected(move) {
 		if (!this.model.disabled) {
 			this.model.player1.setMove(move);
-			this.disableGame(true);
 
-			this.model.disabled = true;
-			this.view.disableClick(true);
 			this.processMove();
 		}
 	}
 
 	onMoveSimulated() {
-		this.model.player1.randomizeMove();
-		this.processMove();
+		if (!this.model.disabled) {
+			this.model.player1.randomizeMove();
+			this.processMove();
+		}
 	}
 
 	disableGame(disabled) {
@@ -45,22 +42,37 @@ export default class Controller {
 	}
 
 	onPlayAgain() {
+		this.model.resetMoves();
+		this.model.resetWinners();
 		this.disableGame(false);
 		this.view.resetView();
 	}
 
 	processMove() {
+		this.disableGame(true);
 		this.model.player2.randomizeMove();
 		this.setActiveClasses();
 		this.model.findWinner();
 
 		this.view.setScoreboardText(this.model.result);
+		this.setWinAndLoseClasses();
 		this.view.showPlayAgainButton(true);
 	}
 
 	setActiveClasses() {
-		this.view.addActiveClass(this.model.player1.move, PLAYER_1);
-		this.view.addActiveClass(this.model.player2.move, PLAYER_2);
+		this.view.addActiveClass(this.model.player1.getMove(), PLAYER_1);
+		this.view.addActiveClass(this.model.player2.getMove(), PLAYER_2);
+	}
+
+	setWinAndLoseClasses() {
+		if(this.model.player1.isWinner()) {
+			this.view.addWinnerClass(this.model.player1.getMove(), PLAYER_1);
+			this.view.addLoserClass(this.model.player2.getMove(), PLAYER_2);
+		}
+		else if(this.model.player2.isWinner()) {
+			this.view.addWinnerClass(this.model.player2.getMove(), PLAYER_2);
+			this.view.addLoserClass(this.model.player1.getMove(), PLAYER_1);
+		}
 	}
 
 }

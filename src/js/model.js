@@ -7,17 +7,25 @@ class Player {
 		this.winner = null;
 	}
 
+	setWinner(winner) {
+		this.winner = winner;
+	}
+
+	isWinner() {
+		return this.winner;
+	}
+
 	setMove(move) {
 		this.move = move;
+	}
+
+	getMove() {
+		return this.move;
 	}
 
 	randomizeMove() {
 		const moveIndex = Math.floor(Math.random() * 3);
 		this.move = MOVES[moveIndex];
-	}
-
-	isWinner() {
-		return this.winner;
 	}
 }
 
@@ -47,10 +55,24 @@ export default class Game {
 		}
 		else if (this.winMatrix[player1Move][player2Move]) {
 			this.result = PLAYER_1_WINS_TEXT;
+			this.player1.setWinner(true);
+			this.player2.setWinner(false);
 		}
 		else {
 			this.result = PLAYER_2_WINS_TEXT;
+			this.player2.setWinner(true);
+			this.player1.setWinner(false);
 		}
+	}
+
+	resetWinners() {
+		this.player1.setWinner(null);
+		this.player2.setWinner(null);
+	}
+
+	resetMoves() {
+		this.player1.setMove(null);
+		this.player2.setMove(null);
 	}
 
 
