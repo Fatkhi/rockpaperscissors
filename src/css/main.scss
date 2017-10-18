@@ -26,9 +26,22 @@
 	float: left;
 	text-align: center;
 	padding: 50px;
+	text-align: center;
+}
+
+.scoreboard-text {
 	color: grey;
 	text-transform: uppercase;
-	text-align: center;
+}
+
+.button {
+	color: grey;
+	border: 1px solid #E0E0E0;
+	padding: 10px 20px;
+}
+
+.hidden {
+	visibility: hidden;
 }
 
 //add clearfix
