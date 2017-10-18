@@ -1,8 +1,25 @@
+/*
+* === Variables ===
+*/
+
+$background-gray: #F5F5F5;
+$border-gray: #CACACA;
+$lightgray: #E0E0E0;
+$darkgray: #A9A9A9;
+
+$border-width: 2px;
+$border-radius: 5px;
+
+
+/*
+* === Main styles ===
+*/
+
 #app {
 	text-align: center;
-	background: #f5f5f5;
-  border: 2px solid #cacaca;
-  border-radius: 5px;
+	background: $background-gray;
+  border: $border-width solid $border-gray;
+  border-radius: $border-radius;
 	&:after {
 		content: "";
 	  display: table;
@@ -32,17 +49,17 @@ button {
 }
 
 .button {
-	color: grey;
-	border: 2px dashed darkgrey;
+	color: gray;
+	border: $border-width dashed $darkgray;
 	padding: 10px 20px;
 	width: 100px;
   margin: 30px 10px;
 	cursor: pointer;
 	&:hover {
-		border: 2px solid darkgrey;
+		border: $border-width solid $darkgray;
 	}
 	&.disabled:hover {
-		border: 2px dashed darkgrey;
+		border: $border-width dashed $darkgray;
 	}
 }
 
@@ -50,15 +67,15 @@ button {
 	padding: 20px;
 	margin: 10px;
 	width: 100px;
-	color: grey;
+	color: gray;
 	text-transform: uppercase;
 	text-align: center;
-	border: 2px solid #E0E0E0;
-	border-radius: 5px;
+	border: $border-width solid $lightgray;
+	border-radius: $border-radius;
 	cursor: pointer;
 
 	&:hover {
-		border-color: darkgray;
+		border-color: $darkgray;
 	}
 }
 
@@ -68,7 +85,7 @@ button {
 	padding: 50px;
 
 	&-text {
-		color: grey;
+		color: gray;
 		text-transform: uppercase;
 		font-size: 26px;
 		padding-bottom: 100px;
@@ -83,9 +100,9 @@ button {
 */
 
 .active {
-	background: #E0E0E0;
+	background: $lightgray;
 	&:hover {
-		border-color: #E0E0E0;
+		border-color: $lightgray;
 	}
 }
 
@@ -97,14 +114,65 @@ button {
 .disabled {
 	cursor: not-allowed;
 	&:hover {
-		border: 2px solid #E0E0E0;
+		border: $border-width solid $lightgray;
 	}
 }
 
 .winner {
-	border: 2px solid green!important;
+	border: $border-width solid green!important;
 }
 
 .loser {
-	border: 2px solid red!important;
+	border: $border-width solid red!important;
+}
+
+/*
+* === Media query for small width devices ===
+*/
+
+@media (max-width: 850px) {
+	body {
+		margin: 0;
+		background: $background-gray;
+	}
+
+	#app {
+		border: none
+	}
+
+	.button {
+		margin: 10px auto;
+	}
+
+	.move {
+		display: inline-block;
+		width: auto;
+		padding: 5px;
+		margin: 5px;
+	}
+
+	.player {
+		padding: 0;
+		float: none;
+		&.right {
+			float: none;
+		}
+	}
+
+	.scoreboard {
+		position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    right: 0px;
+    width: 200px;
+	}
+
+	#player2 {
+		float: none;
+		position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+	}
 }
