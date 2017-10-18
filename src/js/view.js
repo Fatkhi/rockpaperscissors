@@ -1,6 +1,7 @@
 import { qs } from './utils';
 import { MOVES } from './constants';
 import Model from './model';
+import Events from './utils/events';
 
 export default class View {
 	constructor() {
@@ -10,6 +11,10 @@ export default class View {
 		this.scoreboard = qs('.scoreboard-text');
 		this.simulateButton = qs('.js-simulate');
 		this.playAgainButton = qs('.js-play-again');
+
+		this.events = new Events();
+
+		this.scoreboardDefaultText = this.scoreboard.innerText;
 
 		this.player1Moves = [];
 		this.player2Moves = [];
@@ -62,7 +67,7 @@ export default class View {
 		});
 
 		this.playAgainButton.classList.add('hidden');
-		this.scoreboard.innerText = 'Make a move';
+		this.scoreboard.innerText = this.scoreboardDefaultText;
 	}
 
 	//TODO decouple logic, add observer, render logic in view, better styling, responsive layout

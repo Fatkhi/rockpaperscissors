@@ -1,4 +1,5 @@
 import { MOVES, DRAW_TEXT, PLAYER_1_WINS_TEXT, PLAYER_2_WINS_TEXT } from './constants';
+import Events from './utils/events';
 
 class Player {
 	constructor() {
@@ -25,6 +26,8 @@ export default class Game {
 		this.player1 = new Player();
 		this.player2 = new Player();
 		this.result = null;
+
+		this.events = new Events();
 
 		//ROCK=0;PAPER=1;SCISSORS=2 the order in MOVES array
 		this.winMatrix = [
