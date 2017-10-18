@@ -37,13 +37,13 @@ export default class Controller {
 	}
 
 	disableGame(disabled) {
-		this.model.disabled = disabled;
+		this.model.setDisabled(disabled);
 		this.view.disableClick(disabled);
 	}
 
 	onPlayAgain() {
-		this.model.resetMoves();
-		this.model.resetWinners();
+		this.model.resetAll();
+
 		this.disableGame(false);
 		this.view.resetView();
 	}

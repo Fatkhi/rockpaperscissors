@@ -34,6 +34,7 @@ export default class Game {
 		this.player1 = new Player();
 		this.player2 = new Player();
 		this.result = null;
+		this.disabled = null;
 
 		this.events = new Events();
 
@@ -67,15 +68,19 @@ export default class Game {
 		}
 	}
 
-	resetWinners() {
+	setDisabled(disabled) {
+		this.disabled = disabled;
+	}
+
+	resetAll() {
 		this.player1.setWinner(null);
 		this.player2.setWinner(null);
-	}
 
-	resetMoves() {
 		this.player1.setMove(null);
 		this.player2.setMove(null);
-	}
 
+		this.result = null;
+		this.disabled = null;
+	}
 
 }

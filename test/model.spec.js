@@ -83,19 +83,20 @@ describe('model game', () => {
 		});
 	}
 
-	it('resetWinners and resetMoves', () => {
+	it('resets All', () => {
 		model.player1.move = ROCK;
 		model.player1.winner = true;
 		model.player2.move = SCISSORS;
 		model.player2.winner = false;
 
-		model.resetWinners();
-		model.resetMoves();
+		model.resetAll();
 
 		expect(model.player1.move).to.be.equal(null);
 		expect(model.player2.move).to.be.equal(null);
 		expect(model.player1.winner).to.be.equal(null);
 		expect(model.player2.winner).to.be.equal(null);
+		expect(model.result).to.be.equal(null);
+		expect(model.disabled).to.be.equal(null);
 
 	})
 

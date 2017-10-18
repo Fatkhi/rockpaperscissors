@@ -1,5 +1,6 @@
 let singleton = null;
 
+//simple version of EventBus, unsubscribe and multiple listeners should be added
 export default class Events {
 	constructor() {
 		if (!singleton) {
