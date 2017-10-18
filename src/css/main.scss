@@ -38,10 +38,21 @@
 	color: grey;
 	border: 1px solid #E0E0E0;
 	padding: 10px 20px;
+	cursor: pointer;
+	&:hover {
+		background: whitesmoke;
+	}
 }
 
 .hidden {
 	visibility: hidden;
+}
+
+.disabled {
+	cursor: not-allowed;
+	&:hover {
+		background: initial;
+	}
 }
 
 //add clearfix
