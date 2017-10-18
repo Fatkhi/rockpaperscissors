@@ -52,6 +52,8 @@ export default class Game {
 
 		if (this.player1.move === this.player2.move) {
 			this.result = DRAW_TEXT;
+			this.player1.setWinner(false);
+			this.player2.setWinner(false);
 		}
 		else if (this.winMatrix[player1Move][player2Move]) {
 			this.result = PLAYER_1_WINS_TEXT;

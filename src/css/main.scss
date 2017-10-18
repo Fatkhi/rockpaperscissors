@@ -6,6 +6,8 @@ $background-gray: #F5F5F5;
 $border-gray: #CACACA;
 $lightgray: #E0E0E0;
 $darkgray: #A9A9A9;
+$win-color: #3BBF3B;
+$lose-color: #D41C1C;
 
 $border-width: 2px;
 $border-radius: 5px;
@@ -119,11 +121,13 @@ button {
 }
 
 .winner {
-	border: $border-width solid green!important;
+	border: $border-width solid $win-color!important;
+	box-shadow: 0 0 0 3px $win-color;
 }
 
 .loser {
-	border: $border-width solid red!important;
+	border: $border-width solid $lose-color!important;
+	box-shadow: 0 0 0 3px $lose-color;
 }
 
 /*
